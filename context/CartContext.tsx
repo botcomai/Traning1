@@ -95,8 +95,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
       try {
         const items = JSON.parse(saved)
         dispatch({ type: 'LOAD_CART', payload: items })
-      } catch {
-        // ignore
+      } catch (error) {
+        console.warn('Failed to parse cart from localStorage:', error)
       }
     }
   }, [])
